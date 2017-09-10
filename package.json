@@ -7,7 +7,7 @@
     "gatsby": "^1.9.17",
     "gatsby-link": "^1.6.15",
     "gatsby-plugin-react-helmet": "^1.0.5",
-    "react-transition-group": "1.x"
+    "react-transition-group": "^2.2.0"
   },
   "keywords": [
     "gatsby"
