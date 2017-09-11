@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import withRouter from 'react-router-dom/withRouter'
-import { CSSTransitionGroup } from 'react-transition-group'
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 
@@ -62,17 +62,16 @@ const TemplateWrapper = ({ children, location }) => (
       ]}
     />
     <Header />
-    <CSSTransitionGroup
-      component="div"
-      className="transition-group"
-      transitionName="example"
-      transitionEnterTimeout={500}
-      transitionLeaveTimeout={300}
-    >
-      <TransitionHandler
-        location={location}
-        key={location.pathname}
+    <TransitionGroup>
+      <CSSTransition
+          key={location.pathname}
+          classNames="example"
+          timeout={{ enter: 500, exit: 300 }}
       >
+        <TransitionHandler
+            location={location}
+
+        >
         <div
           style={{
             margin: '0 auto',
@@ -83,8 +82,9 @@ const TemplateWrapper = ({ children, location }) => (
         >
           {children()}
         </div>
-      </TransitionHandler>
-    </CSSTransitionGroup>
+        </TransitionHandler>
+      </CSSTransition>
+    </TransitionGroup>
   </div>
 )
 
